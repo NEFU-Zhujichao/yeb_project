@@ -15,6 +15,14 @@ public class RespBean {
     /**
      * 成功返回
      * @param message
+     * @return
+     */
+    public static RespBean success(String message){
+        return new RespBean(200,message,null);
+    }
+    /**
+     * 成功返回
+     * @param message
      * @param object
      * @return
      */

@@ -1,11 +1,16 @@
 package com.example.yebserver.config.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.codec.Base64;
 import org.springframework.stereotype.Component;
+
+import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +23,6 @@ public class JwtTokenUtil {
     private String secret;
     @Value("${jwt.expiration}")
     private Long expiration;
-
     /**
      * 根据用户信息生成Token
      *
@@ -43,7 +47,7 @@ public class JwtTokenUtil {
             Claims claims = getClaimsFromToken(token);
             username = claims.getSubject();
         } catch (Exception e) {
-            e.printStackTrace();
+            username = null;
         }
         return username;
     }
@@ -61,6 +65,7 @@ public class JwtTokenUtil {
                     .setSigningKey(secret)
                     .parseClaimsJws(token)
                     .getBody();
+
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -74,11 +79,11 @@ public class JwtTokenUtil {
      * @return
      */
     private String generateToken(Map<String, Object> claims) {
-        return Jwts.builder()
-                .setClaims(claims)
+//        byte[] keyBytes = Decoders.BASE64.decode(secret);
+//        Key key = Keys.hmacShaKeyFor(keyBytes);
+        return Jwts.builder().setClaims(claims)
                 .setExpiration(generateExpirationDate())
-                .signWith(SignatureAlgorithm.ES512, secret)
-                .compact();
+                .signWith(SignatureAlgorithm.HS512,secret).compact();
     }
 
     /**
