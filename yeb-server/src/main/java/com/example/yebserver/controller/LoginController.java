@@ -1,12 +1,11 @@
 package com.example.yebserver.controller;
 
 import com.example.yebserver.pojo.Admin;
-import com.example.yebserver.pojo.AdminLoginParam;
+import com.example.yebserver.pojo.LoginParam;
 import com.example.yebserver.pojo.RespBean;
 import com.example.yebserver.service.IAdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +24,8 @@ public class LoginController {
 
     @ApiOperation(value = "登录之后返回token")
     @PostMapping("/login")
-    public RespBean login(@RequestBody AdminLoginParam adminLoginParam, HttpServletRequest request){
-        return  adminService.login(adminLoginParam.getUsername(),adminLoginParam.getPassword(),request);
+    public RespBean login(@RequestBody LoginParam loginParam, HttpServletRequest request){
+        return  adminService.login(loginParam.getUsername(),loginParam.getPassword(),loginParam.getCode(),request);
     }
     @ApiOperation(value = "获取登录用户信息")
     @GetMapping("/admin/info")

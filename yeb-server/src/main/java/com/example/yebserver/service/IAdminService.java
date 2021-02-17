@@ -2,9 +2,11 @@ package com.example.yebserver.service;
 
 import com.example.yebserver.pojo.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.yebserver.pojo.Menu;
 import com.example.yebserver.pojo.RespBean;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -22,7 +24,7 @@ public interface IAdminService extends IService<Admin> {
      * @param request
      * @return
      */
-    RespBean login(String username, String password, HttpServletRequest request);
+    RespBean login(String username, String password,String code, HttpServletRequest request);
 
     /**
      * 根据用户名获取用户
@@ -30,4 +32,6 @@ public interface IAdminService extends IService<Admin> {
      * @return
      */
     Admin getAdminByUsername(String username);
+
+
 }

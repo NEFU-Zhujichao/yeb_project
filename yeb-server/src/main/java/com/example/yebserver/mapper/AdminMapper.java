@@ -2,7 +2,10 @@ package com.example.yebserver.mapper;
 
 import com.example.yebserver.pojo.Admin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.yebserver.pojo.Menu;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * <p>
@@ -14,5 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface AdminMapper extends BaseMapper<Admin> {
+
 
 }
