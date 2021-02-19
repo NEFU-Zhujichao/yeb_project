@@ -4,6 +4,7 @@ import com.example.yebserver.pojo.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.yebserver.pojo.Menu;
 import com.example.yebserver.pojo.RespBean;
+import com.example.yebserver.pojo.Role;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -33,5 +34,10 @@ public interface IAdminService extends IService<Admin> {
      */
     Admin getAdminByUsername(String username);
 
-
+    /**
+     * 根据用户id查询角色列表
+     * @param adminId
+     * @return
+     */
+    List<Role> getRoles(Integer adminId);
 }

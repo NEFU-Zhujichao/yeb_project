@@ -1,4 +1,4 @@
-package com.example.yebserver.config.security;
+package com.example.yebserver.config.component;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

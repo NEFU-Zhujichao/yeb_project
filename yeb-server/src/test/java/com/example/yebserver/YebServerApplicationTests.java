@@ -1,6 +1,7 @@
 package com.example.yebserver;
 
-import com.example.yebserver.config.security.JwtTokenUtil;
+import com.example.yebserver.pojo.Menu;
+import com.example.yebserver.service.IMenuService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
@@ -17,7 +18,7 @@ class YebServerApplicationTests {
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    private JwtTokenUtil jwtTokenUtil;
+    private IMenuService menuService;
     @Test
     void contextLoads() {
         String encode = passwordEncoder.encode("123");
@@ -42,4 +43,10 @@ class YebServerApplicationTests {
         System.out.println(jwt);
     }
 
+    @Test
+    public void test_menu(){
+        for (Menu menu : menuService.getMenusWithRole()) {
+            System.out.println(menu);
+        }
+    }
 }

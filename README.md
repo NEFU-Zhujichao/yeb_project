@@ -5,6 +5,7 @@
 - mybatis-plus 3.4.0 mybatis-plus-generator 3.4.0
 - Swagger2  3.0.0 
 - JWT 0.9.1(还有JDK11移除的3个依赖) SpringSecurity 2.4.2 
+- kaptcha 0.0.9
 ***
 ### 2021/2/14
 - 使用代码生成器快速生成 Pojo、Mapper、Mapper XML、Service、Controller 等各个模块的代码，极大的提升了开发效率。 
@@ -26,6 +27,8 @@ JWT令牌格式： jwt.Head token(头部加一个空格加上token)
 - 编写验证码配置，生成图形验证码，配置 produces = "image/jpeg" 接口文档不再是乱码
 - try with resources 自动关闭资源。将要关闭的资源放在try语句内，在try语句执行完后自动关闭资源。
 - 实现根据用户id查询菜单列表
+- 根据请求url判断角色(就是每个菜单需要哪些角色权限)
+- 判断用户角色。接受请求后，遍历当前url所需的所有角色，与当前登录的角色比较。若相同则拥有查看该菜单的权限，若都不相同则抛出权限不足的异常。
 
 
 

@@ -1,11 +1,12 @@
 package com.example.yebserver.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.yebserver.config.security.JwtTokenUtil;
+import com.example.yebserver.config.component.JwtTokenUtil;
+import com.example.yebserver.mapper.RoleMapper;
 import com.example.yebserver.pojo.Admin;
 import com.example.yebserver.mapper.AdminMapper;
-import com.example.yebserver.pojo.Menu;
 import com.example.yebserver.pojo.RespBean;
+import com.example.yebserver.pojo.Role;
 import com.example.yebserver.service.IAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,8 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private AdminMapper adminMapper;
+    @Autowired
+    private RoleMapper roleMapper;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
     /**
@@ -87,6 +90,15 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
                 .eq("username", username)
                 .eq("enabled", true));
         return admin;
+    }
+    /**
+     * 根据用户id查询角色列表
+     * @param adminId
+     * @return
+     */
+    @Override
+    public List<Role> getRoles(Integer adminId) {
+        return roleMapper.getRoles(adminId);
     }
 
 

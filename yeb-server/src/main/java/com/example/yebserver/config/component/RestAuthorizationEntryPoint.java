@@ -1,9 +1,9 @@
-package com.example.yebserver.config.security;
+package com.example.yebserver.config.component;
 
 import com.example.yebserver.pojo.RespBean;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -13,17 +13,17 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * 访问接口没有权限时，自定义返回结果
+ * 当未登录或者token失效时访问接口时，自定义的返回结果
  */
 @Component
-public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
+public class RestAuthorizationEntryPoint implements AuthenticationEntryPoint {
     @Override
-    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
+    public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
         httpServletResponse.setCharacterEncoding("UTF-8");
         httpServletResponse.setContentType("application/json");
         PrintWriter writer = httpServletResponse.getWriter();
-        RespBean bean = RespBean.error("权限不足，请联系管理员");
-        bean.setCode(403);
+        RespBean bean = RespBean.error("尚未登陆，请登录");
+        bean.setCode(401);
         writer.write(new ObjectMapper().writeValueAsString(bean));
         writer.flush();
         writer.close();
