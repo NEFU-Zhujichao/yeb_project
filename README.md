@@ -27,11 +27,35 @@ JWT令牌格式： jwt.Head token(头部加一个空格加上token)
 - 编写验证码配置，生成图形验证码，配置 produces = "image/jpeg" 接口文档不再是乱码
 - try with resources 自动关闭资源。将要关闭的资源放在try语句内，在try语句执行完后自动关闭资源。
 - 实现根据用户id查询菜单列表
+- ~~Redis集成菜单功能~~
 - 根据请求url判断角色(就是每个菜单需要哪些角色权限)
 - 判断用户角色。接受请求后，遍历当前url所需的所有角色，与当前登录的角色比较。若相同则拥有查看该菜单的权限，若都不相同则抛出权限不足的异常。
-
-
-
+### 2021/2/19
+- 实现职位管理功能(包括单表的增删改查，Mybatis-Plus非常方便)
+- 添加简单全局异常处理
+- 实现职称管理功能(同职位管理)
+- 实现权限组角色功能
+- 实现权限组菜单查询，更新功能
+### 2021/2/20
+- 复习存储过程
+```sql
+/* 创建存储过程 
+create procedure p_name(IN,OUT,INOUT)
+BEGIN 
+END
+在存储过程中使用用户变量 
+变量名必须@开头，并且不要乱用  */
+set @str = 'hello';
+create procedure HelloWorld()
+select CONCAT(@str,'world');
+-- 调用存储过程
+call HelloWorld();
+-- 在存储过程中传递全局范围用户变量 
+create procedure p1() set @last_procedure = 'p1';
+create procedure p2() select CONCAT('last_procedure was ',@last_procedure);
+call p1();
+call p2();
+```
 
 
 
