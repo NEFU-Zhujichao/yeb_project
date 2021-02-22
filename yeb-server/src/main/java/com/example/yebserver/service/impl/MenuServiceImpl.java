@@ -5,6 +5,7 @@ import com.example.yebserver.pojo.Menu;
 import com.example.yebserver.mapper.MenuMapper;
 import com.example.yebserver.service.IMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.yebserver.util.AdminUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
      */
     @Override
     public List<Menu> getMenusByAdminId() {
-        return menuMapper.getMenusByAdminId(((Admin) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getId());
+        return menuMapper.getMenusByAdminId(AdminUtils.getCurrentAdmin().getId());
     }
     /**
      * 根据角色获取菜单列表

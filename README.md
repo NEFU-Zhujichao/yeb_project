@@ -56,10 +56,15 @@ create procedure p2() select CONCAT('last_procedure was ',@last_procedure);
 call p1();
 call p2();
 ```
+### 2021/2/21
+- 实现查询所有部门
+- 实现添加部门
+- 实现删除部门
+- 实现获取所有操作员
+- 实现修改及删除操作员
+- @Data 生成了getter方法,实现了UserDetails又重写了isEnabled方法 enabled的值我们想使用重写的，所以在enabled上添加注解@Getter(AccessLevel.NONE),表示不生成getter方法
+- 实现更新操作员角色列表
 ### 2021/2/22
-- 查询所有部门
-- 添加部门
-- 删除部门
 
 
 
