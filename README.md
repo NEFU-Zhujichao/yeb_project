@@ -56,6 +56,10 @@ create procedure p2() select CONCAT('last_procedure was ',@last_procedure);
 call p1();
 call p2();
 ```
+### 2021/2/22
+- 查询所有部门
+- 添加部门
+- 删除部门
 
 
 
