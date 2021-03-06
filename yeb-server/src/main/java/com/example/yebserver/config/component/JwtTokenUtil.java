@@ -1,9 +1,6 @@
 package com.example.yebserver.config.component;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -66,8 +63,9 @@ public class JwtTokenUtil {
                     .parseClaimsJws(token)
                     .getBody();
 
-        } catch (Exception e){
-            e.printStackTrace();
+        } catch (ExpiredJwtException e){
+            // 在抛的异常中获取过期的荷载
+            claims = e.getClaims();
         }
         return claims;
     }
@@ -103,8 +101,10 @@ public class JwtTokenUtil {
      * @return
      */
     private boolean isTokenExpired(String token) {
+        Claims claims = this.getClaimsFromToken(token);
         Date expiredDate = getExpiredDateFromToken(token);
-        return expiredDate.before(new Date());
+        // 取反这样就不用担心token过期了。
+        return !expiredDate.before(new Date(System.currentTimeMillis()));
     }
 
     /**

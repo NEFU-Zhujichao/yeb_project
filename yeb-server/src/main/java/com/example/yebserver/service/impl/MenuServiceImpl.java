@@ -1,13 +1,11 @@
 package com.example.yebserver.service.impl;
 
-import com.example.yebserver.pojo.Admin;
 import com.example.yebserver.pojo.Menu;
 import com.example.yebserver.mapper.MenuMapper;
 import com.example.yebserver.service.IMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.yebserver.util.AdminUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

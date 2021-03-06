@@ -64,7 +64,12 @@ call p2();
 - 实现修改及删除操作员
 - @Data 生成了getter方法,实现了UserDetails又重写了isEnabled方法 enabled的值我们想使用重写的，所以在enabled上添加注解@Getter(AccessLevel.NONE),表示不生成getter方法
 - 实现更新操作员角色列表
-### 2021/2/22
+### 2021/2/25
+- 添加分页插件
+- 创建公共返回分页对象
+- 创建日期转化工具
+- 获取所有员工分页查询
+- 添加员工，更新员工，删除员工。
 
 
 
