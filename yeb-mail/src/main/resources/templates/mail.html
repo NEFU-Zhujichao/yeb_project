@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://theymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>入职欢迎邮件</title>
+</head>
+<body>
+<h1>欢迎<span th:text="${name}"></span>加入9A309大家庭，您的入职信息如下：</h1>
+<table border="1">
+    <tr>
+        <td>姓名</td>
+        <td>职位</td>
+        <td>职称</td>
+        <td>部门</td>
+    </tr>
+    <tr>
+        <td th:text="${name}"></td>
+        <td th:text="${posName}"></td>
+        <td th:text="${joblevelName}"></td>
+        <td th:text="${departmentName}"></td>
+    </tr>
+</table>
+<p>请保安大队长携手你的保安手下保护好309的大哥们</p>
+</body>
+</html>
