@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -34,6 +35,7 @@ public class SalaryController {
     @ApiOperation(value = "添加工资账套")
     @PostMapping("/")
     public RespBean addSalary(@RequestBody Salary salary){
+        salary.setCreateDate(LocalDateTime.now());
         if (salaryService.save(salary)){
             return RespBean.success("添加成功");
         }
