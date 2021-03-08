@@ -1,6 +1,5 @@
 package com.example.yebserver.controller;
 
-import com.example.yebserver.config.CaptchaConfig;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

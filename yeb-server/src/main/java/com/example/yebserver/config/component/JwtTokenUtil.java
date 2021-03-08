@@ -104,7 +104,7 @@ public class JwtTokenUtil {
         Claims claims = this.getClaimsFromToken(token);
         Date expiredDate = getExpiredDateFromToken(token);
         // 取反这样就不用担心token过期了。
-        return !expiredDate.before(new Date(System.currentTimeMillis()));
+        return expiredDate.before(new Date(System.currentTimeMillis()));
     }
 
     /**
