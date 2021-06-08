@@ -27,13 +27,14 @@ public class SendEmailService {
         try {
             MimeMessageHelper helper = new MimeMessageHelper(message,true);
             helper.setFrom(mailProperties.getUsername());
-            helper.setTo("1394949540@qq.com");
-            helper.setSubject("员工入职邮件");
+            // 812352374
+            helper.setTo("812352374@qq.com");
+            helper.setSubject("大连华宇公司");
             helper.setSentDate(new Date());
             Context context = new Context();
-            context.setVariable("name","张思琪");
-            context.setVariable("posName","照顾朱继超先生");
-            context.setVariable("joblevelName","小秘");
+            context.setVariable("name","钮丽俊");
+            context.setVariable("posName","666");
+            context.setVariable("joblevelName","FW");
             context.setVariable("departmentName","9A309");
             String mail = templateEngine.process("mail", context);
             helper.setText(mail,true);

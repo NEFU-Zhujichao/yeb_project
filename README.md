@@ -6,7 +6,7 @@
 - Swagger2  3.0.0 
 - JWT 0.9.1(还有JDK11移除的3个依赖) SpringSecurity 2.4.2 
 - kaptcha 0.0.9
-- easypoi 4.2.0
+- easy poi 4.2.0
 ***
 ### 2021/2/14
 - 使用代码生成器快速生成 Pojo、Mapper、Mapper XML、Service、Controller 等各个模块的代码，极大的提升了开发效率。 
